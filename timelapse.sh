@@ -1,5 +1,7 @@
 #!/bin/bash
 
+FFMPG_BIN='/Users/adriel/Downloads/TimeLapse-Creater-master/ffmpeg'
+
 # Directory input (no trailing slash needed)
 INPUT_DIR=$1
 # Quality of output (hd480,hd720,hd1080)
@@ -41,7 +43,7 @@ if [[ -d "$INPUT_DIR" ]]; then
 		
 		echo 'Combine imgs '$FILE_EXT
 		# Create video
-		ffmpeg -i "$TMP_DIR/%04d$FILE_EXT" -r $FPS -s $QUALITY -vcodec libx264 -threads 0 "$INPUT_DIR"/timelapse1.mp4
+		$FFMPG_BIN -i "$TMP_DIR/%04d$FILE_EXT" -r $FPS -s $QUALITY -vcodec libx264  -pix_fmt yuv420p -threads 0 "$INPUT_DIR"/timelapse1.mp4
 
 	else
 		echo 'Temp dir could not be found'
