@@ -1,20 +1,22 @@
 #!/bin/bash
+# (c)2016 Adriel Kloppenburg
 
-FFMPG_BIN='/Users/adriel/Downloads/TimeLapse-Creater-master/ffmpeg'
+SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )" # get script dir of where the script is run from
+FFMPG_BIN="${SCRIPT_DIR}/ffmpeg"
 
 # Directory input (no trailing slash needed)
 INPUT_DIR=$1
-
 # Quality of output (hd480,hd720,hd1080)
 QUALITY=$2
 FPS=$3
 
 if [[ -z $QUALITY ]]; then
-	QUALITY='hd720'
+	QUALITY='hd1080'
 fi
 if [[ -z $FPS ]]; then
 	FPS='25'
 fi
+
 # Temp dir (trailing slash inluded in $TMPDIR)
 TMP_DIR=$TMPDIR'timelapse_tmp'
 # Need to delete the old timelapse folder from another combine
